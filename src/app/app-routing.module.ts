@@ -7,7 +7,11 @@ import { UserLibraryComponent } from "./components/user-library/user-library.com
 const routes: Routes = [
   { path: "trends", component: TrendsComponent },
   { path: "library", component: UserLibraryComponent },
-  { path: "", pathMatch: "full", component: HomeComponent },
+  {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "/home",
+  },
   { path: "home", component: HomeComponent },
 ];
 

@@ -6,13 +6,10 @@ import { map } from "rxjs";
   providedIn: "root",
 })
 export class SpotifyService {
+  api_url: string = "https://api.spotify.com/v1/";
   client_secret: string = "8817fb6f29b64ac0a5e05f50984e85f0";
   client_id: string = "1dc299d33b0149bc8c6c114139fbb192";
-
-  access_token: string = "";
-  headers = new HttpHeaders({
-    Authorization: `Bearer ${this.access_token}`,
-  });
+  access_token!: string;
   body = new URLSearchParams();
   constructor(private http: HttpClient) {
     this.body.set("grant_type", "client_credentials");
@@ -27,17 +24,29 @@ export class SpotifyService {
         },
       })
       .pipe(
-        map((res) => {
-          console.warn(res);
+        map((res: any) => {
+          this.access_token = res.access_token;
           return res;
         })
       );
   }
 
-  test() {
+  getArtist(id: string) {
+    return this.http.get(`${this.api_url}artists/${id}`, {
+      headers: {
+        Authorization: `Bearer ${this.access_token}`,
+      },
+    });
+  }
+
+  getArtistTopTracks(id: string, market: string) {
     return this.http.get(
-      "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-      { headers: this.headers }
+      `${this.api_url}artists/${id}/top-tracks?market=${market}`,
+      {
+        headers: {
+          Authorization: `Bearer ${this.access_token}`,
+        },
+      }
     );
   }
 }
