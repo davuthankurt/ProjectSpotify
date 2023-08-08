@@ -31,6 +31,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.changeRoute(window.location.pathname);
+    console.log(SidebarComponent)
   }
 
   changeRoute(clickedRoute: string) {
@@ -38,4 +39,5 @@ export class SidebarComponent implements OnInit {
     this.menuItems.filter((item) => item.route === clickedRoute)[0].active =
       true;
   }
+  
 }

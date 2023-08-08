@@ -6,9 +6,20 @@ import { SpotifyService } from "../../services/spotify.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
+
+  
+
+
+
   constructor(private spotifyService: SpotifyService) {}
   ngOnInit(): void {
     // this.spotifyService.getAccessToken().subscribe((res) => console.log(res));
     // this.spotifyService.test().subscribe((res) => console.log(res));
+
+
+    
   }
+
+
+  
 }

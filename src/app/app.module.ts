@@ -14,12 +14,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     HomeComponent,
     TrendsComponent,
     UserLibraryComponent,
-    SidebarComponent
+    SidebarComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]
