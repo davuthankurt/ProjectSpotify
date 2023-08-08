@@ -1,13 +1,14 @@
-.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating), .input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation) > .form-floating:not(:last-child) > .form-control, .input-group:not(.has-validation) > .form-floating:not(:last-child) > .form-select {
-        border-radius: 28px;
+.form-control {
+    border-radius: 1.5rem !important;
+    background-color: #fafafa;
 }
 
-#button-addon2{
-    width:37.6px;
+#button-addon2 {
+    width: 37.6px;
     height: 37.6px;
     border-radius: 50%;
-    border:0;
+    border: 0;
     position: relative;
-    right:37.6px;
+    right: 37.6px;
     z-index: 100;
 }
