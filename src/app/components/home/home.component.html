@@ -6,7 +6,6 @@
       placeholder="What do you want to listen to?"
       aria-label="What do you want to listen to?"
       aria-describedby="button-addon2"
-      formControlName="userSearch"
     />
     <button
       class="btn btn-outline-secondary p-0"
@@ -17,9 +16,24 @@
     </button>
   </div>
 </div>
-<section>
-  <div>
-    {{ mainArtist?.name }}
-    <img src="{{ mainArtist?.images[1].url }}" alt="" srcset="" />
+
+<section class="d-flex justify-content-center align-items-center">
+  <div class="col-10 col-md-6 col-lg-8 gradient-background cover d-flex justify-content-around">
+    
+      <div class="d-flex align-self-end">
+        <img class="cover-img " src="{{ mainArtist?.images[0].url }}" alt="" srcset="" />
+      </div>
+      <div class="row d-inline mt-4">
+        <p class=" fs-4 fw-bold " style="color: whitesmoke;">{{ mainArtist?.name }}</p>
+        <p class="" style="color: whitesmoke;">{{mainArtist?.followers.total}} followers</p>
+        <ul class="genres col-6 ">
+          <li *ngFor="let item of mainArtist?.genres" style="list-style: none; " class="w-50 mb-2">
+            <span class="badge rounded-pill bg-light text-dark mx-2">{{item}}</span>
+          </li>
+        </ul>
+        
+        
+      </div>
+    
   </div>
 </section>

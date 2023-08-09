@@ -12,3 +12,42 @@
     right: 37.6px;
     z-index: 100;
 }
+.cover-img{
+    width: 150px;
+    border-radius: 50%;
+    
+}
+.gradient-background {
+    background: linear-gradient(300deg, black,#391EB2,#FBFFF5);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 60% 10%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+
+.cover{
+    justify-content: center;
+    align-items: center;
+    border-radius: 56px;
+    height: 250px;
+    display: flex !important;
+}
+
+.bg-light{
+  background-color: whitesmoke !important;
+}
+.genres{
+  columns: 2;
+}
