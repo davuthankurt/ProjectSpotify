@@ -9,7 +9,7 @@ import { SpotifyService } from "./services/spotify.service";
 export class AppComponent implements OnInit {
   constructor(private spotifyService: SpotifyService) {}
   ngOnInit(): void {
-    this.spotifyService.getAccessToken().subscribe((res) => res);
+    // this.spotifyService.getAccessToken().subscribe((res) => res);
   }
   title = "angular-app";
 }
