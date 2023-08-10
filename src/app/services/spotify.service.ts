@@ -7,6 +7,7 @@ import { map } from "rxjs";
 })
 export class SpotifyService {
   api_url: string = "https://api.spotify.com/v1/";
+  token_api_url: string = "https://accounts.spotify.com/api/token";
   client_secret: string = "8817fb6f29b64ac0a5e05f50984e85f0";
   client_id: string = "1dc299d33b0149bc8c6c114139fbb192";
   access_token!: string;
@@ -16,7 +17,7 @@ export class SpotifyService {
   }
   getAccessToken() {
     return this.http
-      .post("https://accounts.spotify.com/api/token", this.body.toString(), {
+      .post(this.token_api_url, this.body.toString(), {
         headers: {
           Authorization:
             "Basic " + btoa(this.client_id + ":" + this.client_secret),

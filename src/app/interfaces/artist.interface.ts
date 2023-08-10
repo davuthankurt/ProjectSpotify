@@ -17,7 +17,7 @@ export interface ExternalUrls {
 
 export interface Followers {
   href: any;
-  total: number;
+  total: number | string;
 }
 
 export interface Image {
