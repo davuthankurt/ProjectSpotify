@@ -11,6 +11,9 @@ export class TokenHandler {
   }
 
   initToken(): void {
+    if (!localStorage.getItem("access_token")) {
+      this.tokenService.getAccessToken().subscribe((res) => res);
+    }
     interval(3600 * 1000).subscribe(() => {
       this.tokenService.getAccessToken().subscribe((res) => res);
     });
