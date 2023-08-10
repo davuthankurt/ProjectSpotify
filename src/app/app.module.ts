@@ -8,14 +8,14 @@ import { TrendsComponent } from './components/trends/trends.component';
 import { UserLibraryComponent } from './components/user-library/user-library.component';
 import { HttpClientModule } from "@angular/common/http";
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TrendsComponent,
     UserLibraryComponent,
-    SidebarComponent,
-   
+    SidebarComponent,   
   ],
   imports: [
     BrowserModule,

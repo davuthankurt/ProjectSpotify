@@ -24,7 +24,7 @@
         <img class="cover-img " src="{{ mainArtist?.images[0].url }}" alt="" srcset="" />
       </div>
       <div class="row d-inline mt-4">
-        <p class=" fs-4 fw-bold " style="color: whitesmoke;">{{ mainArtist?.name }}</p>
+        <h1 class=" fw-bold " style="color: whitesmoke;">{{ mainArtist?.name }}</h1>
         <p class="" style="color: whitesmoke;">{{mainArtist?.followers.total}} followers</p>
         <ul class="genres col-6 ">
           <li *ngFor="let item of mainArtist?.genres" style="list-style: none; " class="w-50 mb-2">
@@ -37,3 +37,25 @@
     
   </div>
 </section>
+
+<p class="fs-3 fw-bold mx-3 mt-4">Popular</p>
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" ></th>
+        <th scope="col">Title</th>
+        <th scope="col">Playing</th>
+        <th scope="col">Album</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let topTrack of  mainArtistTopTracks?.tracks.slice(0,5); index as i" >
+        <th scope="row">{{ i+1 }}</th>
+        <td><img src="{{ topTrack.album.images[0].url }}" alt="album image" class="d-flex song-img" ></td>
+        <td>{{ topTrack.name }}</td>
+        <td>{{ (topTrack.duration_ms / 60000 )| number : '1.0-0'}}.{{ (topTrack.duration_ms % 60000) }}</td>
+        <td >{{ topTrack.album.release_date.slice(0,4)}}</td>
+      </tr>
+    </tbody>
+  </table>
