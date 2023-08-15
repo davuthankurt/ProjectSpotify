@@ -1,4 +1,4 @@
-export interface Artist {
+export type Artist = Partial<{
   external_urls: ExternalUrls;
   followers: Followers;
   genres: string[];
@@ -9,7 +9,7 @@ export interface Artist {
   popularity: number;
   type: string;
   uri: string;
-}
+}>;
 
 export interface ExternalUrls {
   spotify: string;

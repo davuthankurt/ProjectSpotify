@@ -25,7 +25,6 @@ export class TokenService {
       })
       .pipe(
         map((res: any) => {
-          localStorage.removeItem("access_token");
           localStorage.setItem("access_token", res.access_token);
           return res;
         })
