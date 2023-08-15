@@ -10,6 +10,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
 import { TokenHandler } from "./handlers/token.handler";
+import { CoverComponent } from './components/cover/cover.component';
+import { TopTracksComponent } from './components/top-tracks/top-tracks.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,8 +21,15 @@ import { TokenHandler } from "./handlers/token.handler";
     TrendsComponent,
     UserLibraryComponent,
     SidebarComponent,
+    CoverComponent,
+    TopTracksComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    HttpClientModule, 
+    FormsModule, 
+    ReactiveFormsModule],
   providers: [
     {
       provide: APP_INITIALIZER,

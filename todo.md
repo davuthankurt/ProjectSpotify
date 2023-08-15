@@ -2,7 +2,7 @@
 2- Top tracks section
 3- Servise çıkma loading işlemleri
 
-sayfa ilk ayaklandırıldığında apiden verileri çekemiyo sayfa değiştirip geri gelindiğinde veriyi gösteriyor.
+
 
 Search İşlemleri
 1- Search apisini service'e ekle, istediği parametrelere dikkat et,
@@ -11,3 +11,8 @@ Search İşlemleri
 Home Değişiklikleri
 1-Table'ı component'e çevirmeye çalış,
 2- Led Zeppelin bölümünüde component yapmaya çalış
+
+
+
+
+ana sanatçının link değişince çöküyor.

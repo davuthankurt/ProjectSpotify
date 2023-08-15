@@ -1,0 +1,31 @@
+<section class="d-flex justify-content-center align-items-center">
+    <div
+      class="col-10 col-md-6 col-lg-8 gradient-background cover d-flex justify-content-around"
+    >
+      <div class="d-flex">
+        <img
+          class="cover-img"
+          src="{{ mainArtist?.images[0].url }}"
+          alt=""
+          srcset=""
+        />
+      </div>
+      <div class="row d-inline mt-4">
+        <h1 class="fw-bold" style="color: whitesmoke">{{ mainArtist?.name }}</h1>
+        <p class="mb-1" style="color: whitesmoke">
+          {{ mainArtist?.followers.total | number }} followers
+        </p>
+        <ul class="genres d-flex">
+          <li
+            *ngFor="let genre of mainArtist?.genres | slice : 0 : 5"
+            style="list-style: none"
+            class="mb-2"
+          >
+            <span class="badge rounded-pill bg-light text-dark mx-1">{{
+              genre
+            }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>

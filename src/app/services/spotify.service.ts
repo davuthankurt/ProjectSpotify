@@ -18,4 +18,8 @@ export class SpotifyService {
       `${this.api_url}artists/${id}/top-tracks?market=${market}`
     );
   }
+
+  getSearchedTracks(search: string, market: string){
+    return this.http.get(`${this.api_url}search?query=${search}&type=artist%2Ctrack&market=${market}&limit=10&offset=5`);
+  }
 }

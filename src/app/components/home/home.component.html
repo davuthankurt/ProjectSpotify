@@ -1,92 +1,70 @@
 <div class="container col-6 align-items-center justify-content-center p-3">
-  <div class="input-group">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="What do you want to listen to?"
-      aria-label="What do you want to listen to?"
-      aria-describedby="button-addon2"
-    />
-    <button
-      class="btn btn-outline-secondary p-0"
-      type="button"
-      id="button-addon2"
-    >
-      <i class="bi bi-search"></i>
-    </button>
-  </div>
+  <form [formGroup]="searchForm" >
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="What do you want to listen to?"
+        aria-label="What do you want to listen to?"
+        aria-describedby="button-addon2"
+        formControlName = "searchedSong"
+      />
+      <button
+        class="btn btn-outline-secondary p-0"
+        type="button"
+        id="button-addon2"
+        (click) = "callForSearch()"
+      >
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </form>
+  
 </div>
 
-<section class="d-flex justify-content-center align-items-center">
-  <div
-    class="col-10 col-md-6 col-lg-8 gradient-background cover d-flex justify-content-around"
-  >
-    <div class="d-flex">
-      <img
-        class="cover-img"
-        src="{{ mainArtist?.images[0].url }}"
-        alt=""
-        srcset=""
-      />
-    </div>
-    <div class="row d-inline mt-4">
-      <h1 class="fw-bold" style="color: whitesmoke">{{ mainArtist?.name }}</h1>
-      <p class="mb-1" style="color: whitesmoke">
-        {{ mainArtist?.followers.total | number }} followers
-      </p>
-      <ul class="genres d-flex">
-        <li
-          *ngFor="let genre of mainArtist?.genres | slice : 0 : 5"
-          style="list-style: none"
-          class="mb-2"
-        >
-          <span class="badge rounded-pill bg-light text-dark mx-1">{{
-            genre
-          }}</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
+<app-cover></app-cover>
+<app-top-tracks></app-top-tracks>
 
-<p class="fs-3 fw-bold mx-3 mt-4">Popular</p>
-<div class="p-3">
-  <table class="table table-hover table-borderless">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col"></th>
-        <th scope="col">Title</th>
-        <th scope="col">Playing</th>
-        <th scope="col">Release Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="
-          let topTrack of mainArtistTopTracks?.tracks.slice(0, 5);
-          index as i
-        "
-        class="align-middle"
-        style="cursor: pointer"
-        (click)="selectTrack(topTrack.id)"
-      >
-        <th scope="row">{{ i + 1 }}</th>
-        <td>
-          <img
-            src="{{ topTrack.album.images[0].url }}"
-            alt="album image"
-            class="d-flex song-img"
-          />
-        </td>
-        <td>{{ topTrack.name }}</td>
-        <td>
-          {{ topTrack.duration_ms | date : "m:ss" }}
-        </td>
-        <td>{{ topTrack.album.release_date.slice(0, 4) }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div >
+  <p class="fs-3 fw-bold mx-3 mt-4">Searched Tracks</p>
+  <div class="p-3">
+    <table class="table table-hover table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"></th>
+          <th scope="col">Title</th>
+          <th scope="col">Playing</th>
+          <th scope="col">Release Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let searchedTrack of searchedTracks?.tracks.items;
+            index as i
+          "
+          class="align-middle"
+          style="cursor: pointer"
+          (click)="selectTrack(searchedTrack.id)"
+        >
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <img
+              src="{{ searchedTrack.album.images[0].url }}"
+              alt="album image"
+              class="d-flex song-img"
+            />
+          </td>
+          <td>{{ searchedTrack.name }}</td>
+          <td>
+            {{ searchedTrack.duration_ms | date : "m:ss" }}
+          </td>
+          <td>{{ searchedTrack.album.release_date.slice(0, 4) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div class="col-6 py-3 mx-auto" *ngIf="selectedTrack">
   <iframe
