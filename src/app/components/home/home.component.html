@@ -23,10 +23,58 @@
   </form>
 </div>
 
-<app-cover *ngIf="isSearchActive"></app-cover>
-<app-top-tracks *ngIf="isSearchActive"></app-top-tracks>
+<app-cover
+  [mainArtist]="mainArtist"
+  [apiSuccess]="isAPISuccess"
+  *ngIf="isSearchActive"
+></app-cover>
+<app-top-tracks
+  [mainArtistTopTracks]="mainArtistTopTracks"
+  *ngIf="isSearchActive"
+></app-top-tracks>
 
 <div *ngIf="!isSearchActive">
+  <p class="fs-3 fw-bold mx-3 mt-4">Searched Artists</p>
+  <div class="p-3">
+    <table class="table table-hover table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"></th>
+          <th scope="col">Name</th>
+          <th scope="col">Followers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let searchedArtist of searchedTracks?.artists.items;
+            index as i
+          "
+          class="align-middle"
+          style="cursor: pointer"
+          (click)="changeCover(searchedArtist.id)"
+        >
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <img
+              src="{{
+                searchedArtist.images.length
+                  ? searchedArtist?.images[0].url
+                  : '../../../../../assets/default-artist.png'
+              }}"
+              alt="album image"
+              class="d-flex song-img"
+            />
+          </td>
+          <td>{{ searchedArtist.name }}</td>
+          <td>
+            {{ searchedArtist.followers.total | number }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p class="fs-3 fw-bold mx-3 mt-4">Searched Tracks</p>
   <div class="p-3">
     <table class="table table-hover table-borderless">
@@ -49,7 +97,11 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>
             <img
-              src="{{ searchedTrack.album.images[0].url }}"
+              src="{{
+                searchedTrack.album.images.length
+                  ? searchedTrack.album.images[0].url
+                  : '../../../../../assets/default-artist.png'
+              }}"
               alt="album image"
               class="d-flex song-img"
             />

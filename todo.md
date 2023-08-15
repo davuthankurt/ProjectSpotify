@@ -1,18 +1,10 @@
-1- Cover Page
-2- Top tracks section
-3- Servise çıkma loading işlemleri
-
-
+1- Servise çıkma loading işlemleri
 
 Search İşlemleri
-1- Search apisini service'e ekle, istediği parametrelere dikkat et,
-2- Search ettiğinde Home'da başlangıçta gelen şeyler yerine search edilen şarkılar gelsin,
-3- Arama yapıldıktan sonra searchbar temizle (aranan yazı butona basıldıktan sonra silinsin)
+1- Arama yapıldıktan sonra searchbar temizle (aranan yazı butona basıldıktan sonra silinsin)
 Home Değişiklikleri
-1-Table'ı component'e çevirmeye çalış,
-2- Led Zeppelin bölümünüde component yapmaya çalış
 
-
-
-
-ana sanatçının link değişince çöküyor.
+Trends
+8 tane random şarkıcı getir (Bunun için 20 30 tane id toplayabilirsin spotify'dan),
+Cover arkaplan renkleri hepsinin farklı olsun ve her sayfa yenilendiğinde random bi renk alsın,
+Trends'deki sanatçının cover'ına tıkladığında anasayfa cover'a atsın ora değişsin

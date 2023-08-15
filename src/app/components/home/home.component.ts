@@ -3,8 +3,12 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { take } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
-import { SearchedTracks } from "src/app/interfaces/searched-track.interface";
+import {
+  Artist,
+  SearchedTracks,
+} from "src/app/interfaces/searched-track.interface";
 import { SpotifyService } from "../../services/spotify.service";
+import { PopularTracks } from "../../interfaces/popular-tracks.interface";
 
 @Component({
   selector: "app-home",
@@ -16,6 +20,11 @@ export class HomeComponent implements OnInit {
   searchForm: FormGroup;
   searchedTracks!: SearchedTracks;
   selectedTrack: string = "";
+  mainArtistId: string = "2rwALQ1SXdfUWPUd6WOfYS";
+  isAPISuccess: boolean = true;
+  mainArtist!: Artist;
+  mainArtistTopTracks!: PopularTracks;
+  isLoading: boolean = true;
   constructor(
     private spotifyService: SpotifyService,
     private sanitizer: DomSanitizer
@@ -28,6 +37,8 @@ export class HomeComponent implements OnInit {
       ]),
     });
     this.isSearchActive = true;
+    this.getMainArtist();
+    this.getMainArtistsTopTracks();
   }
 
   getBarSearchedTracks() {
@@ -38,6 +49,39 @@ export class HomeComponent implements OnInit {
         .subscribe((res: any) => {
           this.searchedTracks = res;
           console.log(this.searchedTracks);
+        });
+    }, 1);
+  }
+
+  getMainArtist() {
+    setTimeout(() => {
+      this.spotifyService
+        .getArtist(this.mainArtistId)
+        .pipe(take(1))
+        .subscribe({
+          next: (res: any) => {
+            if (res) {
+              this.mainArtist = res;
+              this.isLoading = false;
+            }
+          },
+          error: (error) => {
+            if (error.status === 400) {
+              this.isAPISuccess = false;
+            }
+          },
+        });
+    }, 1);
+  }
+
+  getMainArtistsTopTracks() {
+    setTimeout(() => {
+      this.spotifyService
+        .getArtistTopTracks(this.mainArtistId, "TR")
+        .pipe(take(1))
+        .subscribe((res: any) => {
+          this.mainArtistTopTracks = res;
+          console.log(this.mainArtistTopTracks);
         });
     }, 1);
   }
@@ -63,5 +107,11 @@ export class HomeComponent implements OnInit {
       .get("searchedSong")
       .valueChanges.pipe(debounceTime(500), distinctUntilChanged())
       .subscribe(() => {});
+  }
+  changeCover(id: string) {
+    this.mainArtistId = id;
+    this.getMainArtist();
+    this.getMainArtistsTopTracks();
+    this.isSearchActive = true;
   }
 }
