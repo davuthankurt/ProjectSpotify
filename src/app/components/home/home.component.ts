@@ -17,6 +17,7 @@ export class HomeComponent  implements OnInit {
   mainArtist!: Artist;
   mainArtistTopTracks!: PopularTracks;
   
+  isSearchActive : boolean;
   searchForm: any
   searchedTracks !: SearchedTracks;
 
@@ -31,7 +32,7 @@ export class HomeComponent  implements OnInit {
     this.searchForm= new FormGroup({
       searchedSong: new FormControl('')
     });
-  
+    this.isSearchActive = true;
   }
 
   getMainArtist() {
@@ -77,6 +78,7 @@ export class HomeComponent  implements OnInit {
 
     console.log(this.searchForm.get('searchedSong').value);
     this.getBarSearchedTracks();
+    this.isSearchActive = false;
   }
 
   selectTrack(id: string) {

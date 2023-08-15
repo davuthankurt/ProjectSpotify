@@ -22,10 +22,10 @@
   
 </div>
 
-<app-cover></app-cover>
-<app-top-tracks></app-top-tracks>
+<app-cover *ngIf="isSearchActive"></app-cover>
+<app-top-tracks *ngIf="isSearchActive"></app-top-tracks>
 
-<div >
+<div *ngIf="!isSearchActive">
   <p class="fs-3 fw-bold mx-3 mt-4">Searched Tracks</p>
   <div class="p-3">
     <table class="table table-hover table-borderless">

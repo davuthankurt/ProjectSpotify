@@ -15,6 +15,7 @@ export class TokenHandler {
       this.tokenService.getAccessToken().subscribe((res) => res);
     }
     interval(3600 * 1000).subscribe(() => {
+      localStorage.removeItem("access_token");
       this.tokenService.getAccessToken().subscribe((res) => res);
     });
   }
