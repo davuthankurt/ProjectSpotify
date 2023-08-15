@@ -1,16 +1,15 @@
 import { Component, OnInit } from "@angular/core";
-import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
+import { DomSanitizer } from "@angular/platform-browser";
 import { take } from "rxjs";
-import { Artist } from "../../interfaces/artist.interface";
 import { PopularTracks } from "../../interfaces/popular-tracks.interface";
 import { SpotifyService } from "../../services/spotify.service";
 @Component({
-  selector: 'app-top-tracks',
-  templateUrl: './top-tracks.component.html',
-  styleUrls: ['./top-tracks.component.scss']
+  selector: "app-top-tracks",
+  templateUrl: "./top-tracks.component.html",
+  styleUrls: ["./top-tracks.component.scss"],
 })
-export class TopTracksComponent  implements OnInit{
-  ledZeppelinId: string = "36QJpDe2go2KgaRleHCDTp";
+export class TopTracksComponent implements OnInit {
+  ledZeppelinId: string = "2rwALQ1SXdfUWPUd6WOfYS";
   mainArtistTopTracks!: PopularTracks;
   selectedTrack: string = "";
   constructor(
@@ -20,7 +19,6 @@ export class TopTracksComponent  implements OnInit{
   ngOnInit(): void {
     this.getMainArtistsTopTracks();
   }
-
 
   getMainArtistsTopTracks() {
     setTimeout(() => {

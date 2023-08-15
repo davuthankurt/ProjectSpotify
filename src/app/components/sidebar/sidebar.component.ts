@@ -30,7 +30,11 @@ export class SidebarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.changeRoute(window.location.pathname);
+    if (window.location.pathname === "/") {
+      this.changeRoute("/home");
+    } else {
+      this.changeRoute(window.location.pathname);
+    }
   }
 
   changeRoute(clickedRoute: string) {
