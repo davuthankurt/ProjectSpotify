@@ -1,5 +1,5 @@
 <div class="container col-6 align-items-center justify-content-center p-3">
-  <form [formGroup]="searchForm" >
+  <form [formGroup]="searchForm">
     <div class="input-group">
       <input
         type="text"
@@ -7,19 +7,20 @@
         placeholder="What do you want to listen to?"
         aria-label="What do you want to listen to?"
         aria-describedby="button-addon2"
-        formControlName = "searchedSong"
+        formControlName="searchedSong"
+        (keyup)="onChange($event)"
       />
       <button
         class="btn btn-outline-secondary p-0"
         type="button"
         id="button-addon2"
-        (click) = "callForSearch()"
+        (click)="callForSearch()"
+        [disabled]="!searchForm.valid"
       >
         <i class="bi bi-search"></i>
       </button>
     </div>
   </form>
-  
 </div>
 
 <app-cover *ngIf="isSearchActive"></app-cover>
@@ -40,10 +41,7 @@
       </thead>
       <tbody>
         <tr
-          *ngFor="
-            let searchedTrack of searchedTracks?.tracks.items;
-            index as i
-          "
+          *ngFor="let searchedTrack of searchedTracks?.tracks.items; index as i"
           class="align-middle"
           style="cursor: pointer"
           (click)="selectTrack(searchedTrack.id)"

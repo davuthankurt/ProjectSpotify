@@ -1,26 +1,19 @@
 import { Component, OnInit } from "@angular/core";
-import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { take } from "rxjs";
 import { Artist } from "../../interfaces/artist.interface";
-import { PopularTracks } from "../../interfaces/popular-tracks.interface";
 import { SpotifyService } from "../../services/spotify.service";
 @Component({
-  selector: 'app-cover',
-  templateUrl: './cover.component.html',
-  styleUrls: ['./cover.component.scss']
+  selector: "app-cover",
+  templateUrl: "./cover.component.html",
+  styleUrls: ["./cover.component.scss"],
 })
-
-export class CoverComponent  implements OnInit {
-  ledZeppelinId: string = "36QJpDe2go2KgaRleHCDTp";
+export class CoverComponent implements OnInit {
+  ledZeppelinId: string = "2rwALQ1SXdfUWPUd6WOfYS";
   mainArtist!: Artist;
   selectedTrack: string = "";
-  constructor(
-    private spotifyService: SpotifyService,
-    private sanitizer: DomSanitizer
-  ) {}
+  constructor(private spotifyService: SpotifyService) {}
   ngOnInit(): void {
     this.getMainArtist();
-    
   }
 
   getMainArtist() {
@@ -35,5 +28,3 @@ export class CoverComponent  implements OnInit {
     }, 1);
   }
 }
-
-
