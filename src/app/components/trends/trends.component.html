@@ -1,1 +1,3 @@
-<app-cover *ngFor="let artist of artistIds" class="m-5"></app-cover>
+<div *ngFor="let artist of artists">
+  <app-cover [mainArtist]="artist" class="m-5"></app-cover>
+</div>
