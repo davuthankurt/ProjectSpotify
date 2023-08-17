@@ -13,6 +13,7 @@ const routes: Routes = [
     redirectTo: "/home",
   },
   { path: "home", component: HomeComponent },
+  // { path: "home:id", component: HomeComponent },
 ];
 
 @NgModule({

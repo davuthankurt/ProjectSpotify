@@ -42,48 +42,42 @@ export class HomeComponent implements OnInit {
   }
 
   getBarSearchedTracks() {
-    setTimeout(() => {
-      this.spotifyService
-        .getSearchedTracks(this.searchForm.get("searchedSong").value, "TR")
-        .pipe(take(1))
-        .subscribe((res: any) => {
-          this.searchedTracks = res;
-          console.log(this.searchedTracks);
-        });
-    }, 1);
+    this.spotifyService
+      .getSearchedTracks(this.searchForm.get("searchedSong").value, "TR")
+      .pipe(take(1))
+      .subscribe((res: any) => {
+        this.searchedTracks = res;
+        console.log(this.searchedTracks);
+      });
   }
 
   getMainArtist() {
-    setTimeout(() => {
-      this.spotifyService
-        .getArtist(this.mainArtistId)
-        .pipe(take(1))
-        .subscribe({
-          next: (res: any) => {
-            if (res) {
-              this.mainArtist = res;
-              this.isLoading = false;
-            }
-          },
-          error: (error) => {
-            if (error.status === 400) {
-              this.isAPISuccess = false;
-            }
-          },
-        });
-    }, 1);
+    this.spotifyService
+      .getArtist(this.mainArtistId)
+      .pipe(take(1))
+      .subscribe({
+        next: (res: any) => {
+          if (res) {
+            this.mainArtist = res;
+            this.isLoading = false;
+          }
+        },
+        error: (error) => {
+          if (error.status === 400) {
+            this.isAPISuccess = false;
+          }
+        },
+      });
   }
 
   getMainArtistsTopTracks() {
-    setTimeout(() => {
-      this.spotifyService
-        .getArtistTopTracks(this.mainArtistId, "TR")
-        .pipe(take(1))
-        .subscribe((res: any) => {
-          this.mainArtistTopTracks = res;
-          console.log(this.mainArtistTopTracks);
-        });
-    }, 1);
+    this.spotifyService
+      .getArtistTopTracks(this.mainArtistId, "TR")
+      .pipe(take(1))
+      .subscribe((res: any) => {
+        this.mainArtistTopTracks = res;
+        console.log(this.mainArtistTopTracks);
+      });
   }
 
   callForSearch() {
