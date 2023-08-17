@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   searchForm: FormGroup;
   searchedTracks!: SearchedTracks;
   selectedTrack: string = "";
-  mainArtistId: string = "2rwALQ1SXdfUWPUd6WOfYS";
+  mainArtistId: string = "36QJpDe2go2KgaRleHCDTp";
   isAPISuccess: boolean = true;
   mainArtist!: Artist;
   mainArtistTopTracks!: PopularTracks;
