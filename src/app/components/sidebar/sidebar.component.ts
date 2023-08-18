@@ -19,13 +19,7 @@ export class SidebarComponent implements OnInit {
       icon: "bookmark-star-fill",
       route: "/trends",
       active: false,
-    },
-    {
-      title: "Library",
-      icon: "music-note-beamed",
-      route: "/library",
-      active: false,
-    },
+    }
   ];
   constructor() {}
 

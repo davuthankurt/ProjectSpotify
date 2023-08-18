@@ -5,7 +5,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./components/home/home.component";
 import { TrendsComponent } from "./components/trends/trends.component";
-import { UserLibraryComponent } from "./components/user-library/user-library.component";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
@@ -19,7 +18,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HomeComponent,
     TrendsComponent,
-    UserLibraryComponent,
     SidebarComponent,
     CoverComponent,
     TopTracksComponent,
